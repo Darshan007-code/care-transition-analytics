@@ -41,59 +41,74 @@ st.set_page_config(
 )
 
 # ---------------------------------------------------------
-# Modern CSS Design Theme (Palantir / Linear / USWDS Aesthetic)
+# Elite UI & CSS Theme (SaaS / Linear / Palantir Aesthetic)
 # ---------------------------------------------------------
 st.markdown("""
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 
     html, body, [class*="css"] {
         font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
         color: #0F172A;
+        letter-spacing: -0.01em;
     }
 
-    /* Background Tint */
+    /* Streamlit Default Container Polish */
+    .block-container {
+        padding-top: 1.6rem !important;
+        padding-bottom: 3rem !important;
+        max-width: 95% !important;
+    }
+
     .stApp {
         background: #F8FAFC;
     }
 
-    /* Modern Hero Header Banner */
+    /* Hero Command Banner */
     .hero-banner {
-        background: linear-gradient(135deg, #0B192C 0%, #1E3E62 60%, #000000 100%);
+        background: radial-gradient(circle at 92% 10%, rgba(59, 130, 246, 0.32) 0%, rgba(0, 0, 0, 0) 55%),
+                    linear-gradient(135deg, #091322 0%, #122842 55%, #050B14 100%);
         color: #FFFFFF;
-        padding: 30px 36px;
-        border-radius: 16px;
-        margin-bottom: 24px;
-        box-shadow: 0 10px 30px -5px rgba(11, 25, 44, 0.25);
-        border: 1px solid rgba(255, 255, 255, 0.08);
+        padding: 32px 38px 28px 38px;
+        border-radius: 18px;
+        margin-bottom: 22px;
+        box-shadow: 0 12px 36px -8px rgba(9, 19, 34, 0.35);
+        border: 1px solid rgba(255, 255, 255, 0.1);
         position: relative;
         overflow: hidden;
     }
-    .hero-banner::after {
-        content: '';
-        position: absolute;
-        top: -60px;
-        right: -60px;
-        width: 260px;
-        height: 260px;
-        background: radial-gradient(circle, rgba(59, 130, 246, 0.25) 0%, rgba(0,0,0,0) 70%);
-        border-radius: 50%;
-        pointer-events: none;
+    .hero-badge-row {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 14px;
+        flex-wrap: wrap;
     }
     .hero-badge {
         display: inline-flex;
         align-items: center;
         background: rgba(255, 255, 255, 0.12);
-        backdrop-filter: blur(8px);
-        padding: 6px 14px;
+        backdrop-filter: blur(10px);
+        padding: 5px 14px;
         border-radius: 20px;
-        font-size: 0.76rem;
-        font-weight: 600;
-        letter-spacing: 0.8px;
+        font-size: 0.74rem;
+        font-weight: 700;
+        letter-spacing: 0.9px;
         text-transform: uppercase;
-        color: #93C5FD;
-        margin-bottom: 12px;
-        border: 1px solid rgba(255, 255, 255, 0.15);
+        color: #BFDBFE;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+    }
+    .hero-live-pill {
+        display: inline-flex;
+        align-items: center;
+        background: rgba(16, 185, 129, 0.16);
+        border: 1px solid rgba(16, 185, 129, 0.35);
+        color: #6EE7B7;
+        font-size: 0.72rem;
+        font-weight: 700;
+        padding: 4px 12px;
+        border-radius: 20px;
+        letter-spacing: 0.5px;
     }
     .pulse-dot {
         width: 8px;
@@ -101,7 +116,7 @@ st.markdown("""
         background-color: #10B981;
         border-radius: 50%;
         display: inline-block;
-        margin-right: 8px;
+        margin-right: 7px;
         box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
         animation: pulse-ring 2s infinite cubic-bezier(0.66, 0, 0, 1);
     }
@@ -111,57 +126,59 @@ st.markdown("""
         100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
     }
     .hero-title {
-        font-size: 2.1rem;
+        font-size: 2.25rem;
         font-weight: 800;
-        letter-spacing: -0.8px;
-        line-height: 1.2;
-        margin: 0 0 8px 0;
-        background: linear-gradient(180deg, #FFFFFF 0%, #E2E8F0 100%);
+        letter-spacing: -1px;
+        line-height: 1.15;
+        margin: 0 0 10px 0;
+        background: linear-gradient(180deg, #FFFFFF 20%, #E2E8F0 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
     }
     .hero-subtitle {
         font-size: 0.95rem;
         color: #94A3B8;
-        max-width: 850px;
-        line-height: 1.5;
+        max-width: 900px;
+        line-height: 1.55;
         margin: 0;
+        font-weight: 400;
     }
     .hero-meta-row {
         display: flex;
-        gap: 24px;
-        margin-top: 18px;
-        padding-top: 16px;
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-        font-size: 0.85rem;
+        gap: 28px;
+        margin-top: 20px;
+        padding-top: 18px;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        font-size: 0.84rem;
         color: #CBD5E1;
+        flex-wrap: wrap;
     }
     .hero-meta-item {
         display: flex;
         align-items: center;
-        gap: 6px;
+        gap: 7px;
     }
 
-    /* KPI Glassmorphism Cards */
+    /* Elevated KPI Scorecards with Micro-Progress Bars */
     .kpi-grid {
         display: grid;
-        grid-template-columns: repeat(5, 1fr);
+        grid-template-columns: repeat(auto-fit, minmax(215px, 1fr));
         gap: 16px;
         margin-bottom: 20px;
     }
     .kpi-card {
         background: #FFFFFF;
         border-radius: 14px;
-        padding: 20px 18px 16px 18px;
-        box-shadow: 0 4px 12px -2px rgba(15, 23, 42, 0.05);
+        padding: 20px 20px 16px 20px;
+        box-shadow: 0 4px 14px -3px rgba(15, 23, 42, 0.05);
         border: 1px solid #E2E8F0;
         position: relative;
         overflow: hidden;
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
     }
     .kpi-card:hover {
         transform: translateY(-3px);
-        box-shadow: 0 12px 24px -6px rgba(15, 23, 42, 0.1);
+        box-shadow: 0 14px 26px -6px rgba(15, 23, 42, 0.1);
         border-color: #CBD5E1;
     }
     .kpi-stripe {
@@ -184,26 +201,44 @@ st.markdown("""
         margin-bottom: 8px;
     }
     .kpi-label {
-        font-size: 0.78rem;
+        font-size: 0.76rem;
         font-weight: 700;
         color: #64748B;
         text-transform: uppercase;
         letter-spacing: 0.6px;
     }
     .kpi-icon {
-        font-size: 1.1rem;
-        opacity: 0.85;
+        font-size: 1.15rem;
     }
     .kpi-value {
-        font-size: 2.15rem;
+        font-family: 'JetBrains Mono', 'Plus Jakarta Sans', monospace;
+        font-size: 2.2rem;
         font-weight: 800;
         color: #0F172A;
-        letter-spacing: -0.8px;
+        letter-spacing: -1px;
         line-height: 1.1;
-        margin-bottom: 6px;
+        margin-bottom: 8px;
+    }
+    .kpi-progress-track {
+        width: 100%;
+        height: 5px;
+        background: #F1F5F9;
+        border-radius: 4px;
+        overflow: hidden;
+        margin-bottom: 8px;
+    }
+    .kpi-progress-bar {
+        height: 100%;
+        border-radius: 4px;
+        transition: width 0.4s ease;
+    }
+    .kpi-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
     .kpi-target-tag {
-        font-size: 0.74rem;
+        font-size: 0.72rem;
         font-weight: 600;
         padding: 3px 8px;
         border-radius: 6px;
@@ -213,41 +248,47 @@ st.markdown("""
     .tag-info { background: #EFF6FF; color: #1D4ED8; }
     .tag-warning { background: #FFFBEB; color: #B45309; }
 
-    /* Secondary Metric Cards */
+    /* Secondary Roster Pill Cards */
     .metric-pill-card {
         background: #FFFFFF;
         border: 1px solid #E2E8F0;
         border-radius: 12px;
         padding: 14px 18px;
-        display: flex;
-        flex-direction: column;
         box-shadow: 0 2px 6px -1px rgba(0,0,0,0.03);
+        transition: transform 0.2s ease;
+    }
+    .metric-pill-card:hover {
+        border-color: #CBD5E1;
+        transform: translateY(-2px);
     }
     .metric-pill-label {
-        font-size: 0.75rem;
-        font-weight: 600;
+        font-size: 0.74rem;
+        font-weight: 700;
         color: #64748B;
         text-transform: uppercase;
-        margin-bottom: 2px;
+        letter-spacing: 0.5px;
+        margin-bottom: 3px;
+        display: block;
     }
     .metric-pill-val {
+        font-family: 'JetBrains Mono', monospace;
         font-size: 1.35rem;
         font-weight: 700;
         color: #1E293B;
     }
 
-    /* Custom Streamlit Tabs Styling */
+    /* Refined Custom Tabs */
     .stTabs [data-baseweb="tab-list"] {
         gap: 6px;
-        background-color: #EDF2F7;
+        background-color: #EEF2F6;
         padding: 6px;
-        border-radius: 12px;
+        border-radius: 13px;
         border: 1px solid #CBD5E1;
-        margin-bottom: 18px;
+        margin-bottom: 20px;
     }
     .stTabs [data-baseweb="tab"] {
         height: 42px;
-        border-radius: 8px;
+        border-radius: 9px;
         padding: 0 16px;
         font-weight: 600;
         font-size: 0.88rem;
@@ -263,96 +304,105 @@ st.markdown("""
     .stTabs [aria-selected="true"] {
         background-color: #0B192C !important;
         color: #FFFFFF !important;
-        box-shadow: 0 4px 12px rgba(11, 25, 44, 0.2);
+        box-shadow: 0 4px 14px rgba(11, 25, 44, 0.22);
     }
 
-    /* Chart Shell Card */
+    /* Chart Shell Container */
     .chart-shell {
         background: #FFFFFF;
         border: 1px solid #E2E8F0;
-        border-radius: 14px;
-        padding: 20px 22px 14px 22px;
-        box-shadow: 0 4px 12px -2px rgba(15, 23, 42, 0.04);
-        margin-bottom: 20px;
+        border-radius: 16px;
+        padding: 22px 24px 16px 24px;
+        box-shadow: 0 4px 16px -2px rgba(15, 23, 42, 0.04);
+        margin-bottom: 22px;
+        transition: box-shadow 0.2s ease;
+    }
+    .chart-shell:hover {
+        box-shadow: 0 8px 24px -4px rgba(15, 23, 42, 0.07);
     }
     .chart-shell-header {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin-bottom: 10px;
+        margin-bottom: 12px;
     }
     .chart-shell-title {
-        font-size: 1.05rem;
+        font-size: 1.08rem;
         font-weight: 700;
         color: #0F172A;
+        letter-spacing: -0.3px;
         margin: 0;
     }
     .chart-shell-badge {
         font-size: 0.74rem;
-        font-weight: 600;
+        font-weight: 700;
         padding: 3px 10px;
         border-radius: 6px;
         background: #F1F5F9;
         color: #475569;
+        letter-spacing: 0.4px;
     }
 
-    /* Alert Badges */
+    /* Surveillance Ribbon */
     .alert-strip {
         background: #FFFFFF;
         border: 1px solid #E2E8F0;
-        border-radius: 12px;
-        padding: 12px 18px;
-        margin-bottom: 20px;
+        border-radius: 14px;
+        padding: 14px 20px;
+        margin-bottom: 22px;
         display: flex;
         align-items: center;
         gap: 16px;
         flex-wrap: wrap;
+        box-shadow: 0 2px 6px -1px rgba(0,0,0,0.03);
     }
     .badge-pill {
         display: inline-flex;
         align-items: center;
         gap: 6px;
-        padding: 5px 12px;
+        padding: 5px 14px;
         border-radius: 20px;
-        font-size: 0.8rem;
+        font-size: 0.82rem;
         font-weight: 600;
     }
     .badge-red { background: #FEE2E2; color: #991B1B; border: 1px solid #FECACA; }
     .badge-amber { background: #FEF3C7; color: #92400E; border: 1px solid #FDE68A; }
     .badge-green { background: #D1FAE5; color: #065F46; border: 1px solid #A7F3D0; }
 
-    /* Report Download Card */
+    /* Download Deliverable Cards */
     .download-card {
         background: #FFFFFF;
         border: 1px solid #E2E8F0;
-        border-radius: 14px;
-        padding: 22px;
-        box-shadow: 0 4px 12px -2px rgba(15, 23, 42, 0.05);
+        border-radius: 16px;
+        padding: 24px;
+        box-shadow: 0 4px 14px -2px rgba(15, 23, 42, 0.05);
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         height: 100%;
-        transition: transform 0.2s ease;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
     .download-card:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 8px 18px -4px rgba(15, 23, 42, 0.08);
+        transform: translateY(-3px);
+        box-shadow: 0 10px 24px -4px rgba(15, 23, 42, 0.09);
+        border-color: #CBD5E1;
     }
     .doc-icon {
-        font-size: 2.2rem;
+        font-size: 2.3rem;
         margin-bottom: 12px;
     }
     .doc-title {
-        font-size: 1.1rem;
+        font-size: 1.15rem;
         font-weight: 700;
         color: #0F172A;
+        letter-spacing: -0.3px;
         margin-bottom: 6px;
     }
     .doc-desc {
-        font-size: 0.82rem;
+        font-size: 0.84rem;
         color: #64748B;
-        line-height: 1.4;
-        margin-bottom: 16px;
+        line-height: 1.5;
+        margin-bottom: 18px;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -363,7 +413,7 @@ st.markdown("""
 # ---------------------------------------------------------
 def apply_theme(fig: go.Figure, title: str = "", height: int = 370) -> go.Figure:
     """
-    Applies executive design styling to any Plotly chart.
+    Applies executive design styling with smooth aesthetics to any Plotly chart.
     """
     fig.update_layout(
         title=dict(
@@ -525,13 +575,13 @@ backlog_alert_count = (df['Total_System_Net_Change'] > backlog_thresh).sum()
 
 
 # ---------------------------------------------------------
-# Hero Banner Component
+# Hero Command Banner
 # ---------------------------------------------------------
 st.markdown(f"""
 <div class="hero-banner">
-    <div class="hero-badge">
-        <span class="pulse-dot"></span>
-        U.S. DEPT OF HEALTH & HUMAN SERVICES • CBP • UNIFIED MENTOR
+    <div class="hero-badge-row">
+        <div class="hero-badge">🏛️ U.S. DEPT OF HEALTH & HUMAN SERVICES • CBP • UNIFIED MENTOR</div>
+        <div class="hero-live-pill"><span class="pulse-dot"></span>SURVEILLANCE MODE: REAL-TIME ACTIVE</div>
     </div>
     <h1 class="hero-title">Care Transition Efficiency & Placement Outcome Analytics</h1>
     <p class="hero-subtitle">
@@ -557,8 +607,21 @@ st.markdown(f"""
 
 
 # ---------------------------------------------------------
-# Executive KPI Scorecard Grid (Row 1)
+# Executive KPI Scorecard Grid with Micro-Progress Bars
 # ---------------------------------------------------------
+trans_eff_pct = kpis.get('mean_transfer_efficiency', 0) * 100.0
+disc_eff_pct = kpis.get('mean_discharge_effectiveness', 0) * 100.0
+tp_val = kpis.get('global_throughput', 0)
+tvpra_pct = kpis.get('tvpra_compliance_pct', 0)
+stab_val = kpis.get('mean_stability_score', 0)
+
+# Normalized progress bar widths (clamped 0 to 100%)
+bar_trans = min(100.0, max(0.0, (trans_eff_pct / 100.0) * 100.0))
+bar_disc = min(100.0, max(0.0, (disc_eff_pct / 4.0) * 100.0))
+bar_tp = min(100.0, max(0.0, (tp_val / 2.0) * 100.0))
+bar_tvpra = min(100.0, max(0.0, tvpra_pct))
+bar_stab = min(100.0, max(0.0, stab_val))
+
 st.markdown(f"""
 <div class="kpi-grid">
     <div class="kpi-card">
@@ -567,8 +630,14 @@ st.markdown(f"""
             <span class="kpi-label">Transfer Efficiency</span>
             <span class="kpi-icon">⚡</span>
         </div>
-        <div class="kpi-value">{kpis.get('mean_transfer_efficiency', 0)*100:.1f}%</div>
-        <div class="kpi-target-tag tag-info">Target: &gt; 70.0%</div>
+        <div class="kpi-value">{trans_eff_pct:.1f}%</div>
+        <div class="kpi-progress-track">
+            <div class="kpi-progress-bar" style="width: {bar_trans:.1f}%; background: linear-gradient(90deg, #2563EB, #60A5FA);"></div>
+        </div>
+        <div class="kpi-footer">
+            <span class="kpi-target-tag tag-info">Target: &gt; 70.0%</span>
+            <span style="font-size:0.75rem; color:#64748B;">Transfers ÷ CBP</span>
+        </div>
     </div>
     <div class="kpi-card">
         <div class="kpi-stripe stripe-green"></div>
@@ -576,8 +645,14 @@ st.markdown(f"""
             <span class="kpi-label">Discharge Effectiveness</span>
             <span class="kpi-icon">🎯</span>
         </div>
-        <div class="kpi-value">{kpis.get('mean_discharge_effectiveness', 0)*100:.2f}%</div>
-        <div class="kpi-target-tag tag-success">Daily Placement Rate</div>
+        <div class="kpi-value">{disc_eff_pct:.2f}%</div>
+        <div class="kpi-progress-track">
+            <div class="kpi-progress-bar" style="width: {bar_disc:.1f}%; background: linear-gradient(90deg, #059669, #34D399);"></div>
+        </div>
+        <div class="kpi-footer">
+            <span class="kpi-target-tag tag-success">Daily Placement Rate</span>
+            <span style="font-size:0.75rem; color:#64748B;">Discharges ÷ Beds</span>
+        </div>
     </div>
     <div class="kpi-card">
         <div class="kpi-stripe stripe-purple"></div>
@@ -585,8 +660,14 @@ st.markdown(f"""
             <span class="kpi-label">Pipeline Throughput</span>
             <span class="kpi-icon">🔄</span>
         </div>
-        <div class="kpi-value">{kpis.get('global_throughput', 0):.2f}x</div>
-        <div class="kpi-target-tag tag-info">Exits ÷ Inflows Ratio</div>
+        <div class="kpi-value">{tp_val:.2f}x</div>
+        <div class="kpi-progress-track">
+            <div class="kpi-progress-bar" style="width: {bar_tp:.1f}%; background: linear-gradient(90deg, #7C3AED, #A78BFA);"></div>
+        </div>
+        <div class="kpi-footer">
+            <span class="kpi-target-tag tag-info">Exits ÷ Inflows Ratio</span>
+            <span style="font-size:0.75rem; color:#64748B;">&ge; 1.00x = Clearing</span>
+        </div>
     </div>
     <div class="kpi-card">
         <div class="kpi-stripe stripe-cyan"></div>
@@ -594,8 +675,14 @@ st.markdown(f"""
             <span class="kpi-label">TVPRA 72h Compliance</span>
             <span class="kpi-icon">⚖️</span>
         </div>
-        <div class="kpi-value">{kpis.get('tvpra_compliance_pct', 0):.1f}%</div>
-        <div class="kpi-target-tag tag-success">Statutory 3-Day Mandate</div>
+        <div class="kpi-value">{tvpra_pct:.1f}%</div>
+        <div class="kpi-progress-track">
+            <div class="kpi-progress-bar" style="width: {bar_tvpra:.1f}%; background: linear-gradient(90deg, #0891B2, #38BDF8);"></div>
+        </div>
+        <div class="kpi-footer">
+            <span class="kpi-target-tag tag-success">Statutory 3-Day Mandate</span>
+            <span style="font-size:0.75rem; color:#64748B;">8 U.S.C. § 1232</span>
+        </div>
     </div>
     <div class="kpi-card">
         <div class="kpi-stripe stripe-amber"></div>
@@ -603,8 +690,14 @@ st.markdown(f"""
             <span class="kpi-label">Outcome Stability</span>
             <span class="kpi-icon">📈</span>
         </div>
-        <div class="kpi-value">{kpis.get('mean_stability_score', 0):.1f}<span style="font-size:1.1rem;color:#94A3B8">/100</span></div>
-        <div class="kpi-target-tag tag-warning">Placement Consistency</div>
+        <div class="kpi-value">{stab_val:.1f}<span style="font-size:1.1rem;color:#94A3B8">/100</span></div>
+        <div class="kpi-progress-track">
+            <div class="kpi-progress-bar" style="width: {bar_stab:.1f}%; background: linear-gradient(90deg, #D97706, #FBBF24);"></div>
+        </div>
+        <div class="kpi-footer">
+            <span class="kpi-target-tag tag-warning">Reunification Consistency</span>
+            <span style="font-size:0.75rem; color:#64748B;">1 - CV(30d)</span>
+        </div>
     </div>
 </div>
 """, unsafe_allow_html=True)
@@ -624,7 +717,7 @@ with scol1:
 with scol2:
     st.markdown(f"""
     <div class="metric-pill-card">
-        <span class="metric-pill-label">Total CBP &rarr; HHS Transfers</span>
+        <span class="metric-pill-label">Total Transfers to HHS</span>
         <span class="metric-pill-val">{kpis.get('total_transfers', 0):,}</span>
     </div>
     """, unsafe_allow_html=True)
@@ -658,7 +751,7 @@ st.markdown("<div style='height: 12px;'></div>", unsafe_allow_html=True)
 # ---------------------------------------------------------
 st.markdown(f"""
 <div class="alert-strip">
-    <span style="font-size:0.85rem; font-weight:700; color:#0F172A;">SURVEILLANCE RADAR:</span>
+    <span style="font-size:0.85rem; font-weight:800; color:#0F172A; letter-spacing:0.4px;">SURVEILLANCE RADAR:</span>
     <span class="badge-pill {'badge-red' if cbp_alert_count > 0 else 'badge-green'}">
         {'⚠️ ' + str(cbp_alert_count) + ' CBP Transfer Slowdowns' if cbp_alert_count > 0 else '✅ CBP Velocity Compliant'}
     </span>
@@ -669,7 +762,7 @@ st.markdown(f"""
         {'🚨 ' + str(alerts['high_severity_count']) + ' High ML Anomalies' if alerts['high_severity_count'] > 0 else '✅ ML Risk Baseline Normal'}
     </span>
     <span style="font-size:0.8rem; color:#64748B; margin-left:auto;">
-        Monitoring via Isolation Forest & Statistical Z-Scores
+        Active Monitoring: Isolation Forest & Statistical Z-Scores
     </span>
 </div>
 """, unsafe_allow_html=True)
@@ -737,7 +830,7 @@ with tab_flow:
             x=df['Date'],
             y=df[col_hhs],
             name="HHS Care Census",
-            line=dict(color="#2563EB", width=2.5),
+            line=dict(color="#2563EB", width=2.5, shape='spline', smoothing=1.1),
             fill='tozeroy',
             fillcolor='rgba(37, 99, 235, 0.08)'
         ))
@@ -760,7 +853,7 @@ with tab_flow:
             x=df['Date'],
             y=df[col_cbp],
             name="CBP Custody",
-            line=dict(color="#F59E0B", width=2.5),
+            line=dict(color="#F59E0B", width=2.5, shape='spline', smoothing=1.1),
             fill='tozeroy',
             fillcolor='rgba(245, 158, 11, 0.1)'
         ))
@@ -783,13 +876,15 @@ with tab_flow:
         x=df['Date'],
         y=df['Apprehended'],
         name="Apprehensions (Inflow)",
-        marker_color="rgba(239, 68, 68, 0.75)"
+        marker_color="rgba(239, 68, 68, 0.8)",
+        marker_line_width=0
     ))
     fig_inout.add_trace(go.Bar(
         x=df['Date'],
         y=df['HHS_Discharges'],
         name="Sponsor Discharges (Exit)",
-        marker_color="rgba(16, 185, 129, 0.75)"
+        marker_color="rgba(16, 185, 129, 0.8)",
+        marker_line_width=0
     ))
     fig_inout = apply_theme(fig_inout, "", height=340)
     fig_inout.update_layout(barmode='group', yaxis_title="Children Count", hovermode="x unified")
@@ -822,13 +917,13 @@ with tab_eff:
             x=df['Date'],
             y=df['Transfer_Efficiency_MA7'],
             name="7-Day MA",
-            line=dict(color="#1D4ED8", width=2.5)
+            line=dict(color="#1D4ED8", width=2.5, shape='spline', smoothing=1.2)
         ))
         fig_te.add_trace(go.Scatter(
             x=df['Date'],
             y=df['Transfer_Efficiency_MA30'],
             name="30-Day MA",
-            line=dict(color="#F59E0B", width=2, dash="dot")
+            line=dict(color="#F59E0B", width=2, dash="dot", shape='spline', smoothing=1.2)
         ))
         fig_te.add_hline(y=0.333, line_dash="dash", line_color="#EF4444", annotation_text="TVPRA 72h Bound (0.33)")
         fig_te = apply_theme(fig_te, "", height=350)
@@ -856,13 +951,13 @@ with tab_eff:
             x=df['Date'],
             y=df['Discharge_Effectiveness_MA7'] * 100.0,
             name="7-Day MA (%)",
-            line=dict(color="#047857", width=2.5)
+            line=dict(color="#047857", width=2.5, shape='spline', smoothing=1.2)
         ))
         fig_de.add_trace(go.Scatter(
             x=df['Date'],
             y=df['Discharge_Effectiveness_MA30'] * 100.0,
             name="30-Day MA (%)",
-            line=dict(color="#8B5CF6", width=2, dash="dot")
+            line=dict(color="#8B5CF6", width=2, dash="dot", shape='spline', smoothing=1.2)
         ))
         fig_de = apply_theme(fig_de, "", height=350)
         fig_de.update_layout(yaxis_title="Daily Discharge Rate (%)", hovermode="x unified")
@@ -931,6 +1026,7 @@ with tab_bottle:
             x=df['Date'],
             y=df['Total_System_Net_Change'],
             marker_color=colors_net,
+            marker_line_width=0,
             name="Daily Net Change"
         ))
         fig_bnet.add_hline(y=backlog_thresh, line_dash="dash", line_color="#F59E0B", annotation_text="Surge Threshold")
@@ -952,7 +1048,7 @@ with tab_bottle:
             x=df['Date'],
             y=df['Cumulative_System_Backlog'],
             name="Cumulative Backlog",
-            line=dict(color="#8B5CF6", width=2.5),
+            line=dict(color="#8B5CF6", width=2.5, shape='spline', smoothing=1.1),
             fill='tozeroy',
             fillcolor='rgba(139, 92, 246, 0.1)'
         ))
@@ -998,6 +1094,7 @@ with tab_temp:
             color='Transfer_Efficiency',
             color_continuous_scale='Blues'
         )
+        fig_dow_eff.update_traces(marker_line_width=0)
         fig_dow_eff = apply_theme(fig_dow_eff, "", height=340)
         fig_dow_eff.update_layout(xaxis_title="Day of Week", yaxis_title="Transfer Efficiency Ratio")
         st.plotly_chart(fig_dow_eff, use_container_width=True)
@@ -1018,6 +1115,7 @@ with tab_temp:
             color='Avg_Discharges',
             color_continuous_scale='Greens'
         )
+        fig_dow_disc.update_traces(marker_line_width=0)
         fig_dow_disc = apply_theme(fig_dow_disc, "", height=340)
         fig_dow_disc.update_layout(xaxis_title="Day of Week", yaxis_title="Mean Discharges (Kids/Day)")
         st.plotly_chart(fig_dow_disc, use_container_width=True)
@@ -1051,6 +1149,7 @@ with tab_temp:
             markers=True,
             color_discrete_sequence=['#EF4444', '#3B82F6', '#10B981']
         )
+        fig_mom.update_traces(line_shape='spline', line_smoothing=1.1)
         fig_mom = apply_theme(fig_mom, "", height=360)
         fig_mom.update_layout(xaxis_title="Reporting Month", yaxis_title="Monthly Volume", xaxis_tickangle=-45)
         st.plotly_chart(fig_mom, use_container_width=True)
@@ -1075,7 +1174,7 @@ with tab_stab:
             x=df['Date'],
             y=df['Outcome_Stability_Score'],
             name="Stability Score",
-            line=dict(color="#059669", width=2.5),
+            line=dict(color="#059669", width=2.5, shape='spline', smoothing=1.1),
             fill='tozeroy',
             fillcolor='rgba(5, 150, 105, 0.08)'
         ))
@@ -1158,6 +1257,37 @@ with tab_sim:
         sponsor_vetting_boost=sim_vet
     )
 
+    # Simulation KPI Comparison Cards
+    sim_base_hhs = df['HHS_Care'].iloc[-1]
+    sim_final_hhs = sim_df['Simulated_HHS_Care'].iloc[-1]
+    sim_delta_hhs = sim_final_hhs - sim_base_hhs
+    sim_final_cum_backlog = sim_df['Cumulative_Backlog'].iloc[-1]
+
+    sim_k1, sim_k2, sim_k3 = st.columns(3)
+    with sim_k1:
+        st.markdown(f"""
+        <div class="metric-pill-card">
+            <span class="metric-pill-label">Projected Final HHS Care Census</span>
+            <span class="metric-pill-val">{sim_final_hhs:,.0f} Kids <small style="font-size:0.8rem; color:{'#EF4444' if sim_delta_hhs > 0 else '#10B981'};">({sim_delta_hhs:+,.0f} vs Baseline)</small></span>
+        </div>
+        """, unsafe_allow_html=True)
+    with sim_k2:
+        st.markdown(f"""
+        <div class="metric-pill-card">
+            <span class="metric-pill-label">Projected Cumulative Backlog</span>
+            <span class="metric-pill-val">{sim_final_cum_backlog:+,.0f} Kids</span>
+        </div>
+        """, unsafe_allow_html=True)
+    with sim_k3:
+        st.markdown(f"""
+        <div class="metric-pill-card">
+            <span class="metric-pill-label">Simulated Transfer Efficiency</span>
+            <span class="metric-pill-val">{sim_df['Transfer_Efficiency'].iloc[0]*100:.1f}%</span>
+        </div>
+        """, unsafe_allow_html=True)
+
+    st.markdown("<div style='height: 12px;'></div>", unsafe_allow_html=True)
+
     sim_p1, sim_p2 = st.columns(2)
     with sim_p1:
         fig_s_stocks = go.Figure()
@@ -1165,13 +1295,13 @@ with tab_sim:
             x=sim_df['Date'],
             y=sim_df['Simulated_HHS_Care'],
             name="Projected HHS Beds",
-            line=dict(color="#2563EB", width=2.5)
+            line=dict(color="#2563EB", width=2.5, shape='spline', smoothing=1.1)
         ))
         fig_s_stocks.add_trace(go.Scatter(
             x=sim_df['Date'],
             y=sim_df['Simulated_CBP_Custody'],
             name="Projected CBP Custody",
-            line=dict(color="#F59E0B", width=2.5)
+            line=dict(color="#F59E0B", width=2.5, shape='spline', smoothing=1.1)
         ))
         fig_s_stocks = apply_theme(fig_s_stocks, "Projected Institutional Roster Balances", height=350)
         fig_s_stocks.update_layout(yaxis_title="Projected Children", hovermode="x unified")
@@ -1189,7 +1319,7 @@ with tab_sim:
             x=sim_df['Date'],
             y=sim_df['Simulated_Discharges'],
             name="Simulated Reunifications",
-            line=dict(color="#10B981", width=2.5)
+            line=dict(color="#10B981", width=2.5, shape='spline', smoothing=1.1)
         ))
         fig_s_flows.add_trace(go.Scatter(
             x=sim_df['Date'],
