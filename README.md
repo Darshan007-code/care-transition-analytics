@@ -1,9 +1,12 @@
 # Care Transition Efficiency & Placement Outcome Analytics
 
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://care-transition-analytics-enmyann9v6ewdfyv4ophmp.streamlit.app/)
 [![Python](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](https://www.python.org/)
-[![Streamlit](https://img.shields.io/badge/Streamlit-1.30%2B-red.svg)](https://streamlit.io/)
+[![Streamlit](https://img.shields.io/badge/Streamlit-1.49%2B-red.svg)](https://streamlit.io/)
 [![Plotly](https://img.shields.io/badge/Plotly-5.18%2B-blueviolet.svg)](https://plotly.com/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+
+> 🚀 **Live Production Deployment:** [https://care-transition-analytics-enmyann9v6ewdfyv4ophmp.streamlit.app/](https://care-transition-analytics-enmyann9v6ewdfyv4ophmp.streamlit.app/)
 
 An end-to-end analytical framework, interactive decision-support dashboard, and policy research platform evaluating process efficiency, transition velocity, and placement outcomes across the **U.S. Unaccompanied Alien Children (UAC) care pipeline**.
 
